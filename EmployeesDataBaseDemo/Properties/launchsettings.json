@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "EmployeesDataBaseDemo (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "EmployeesDataBaseDemo (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
