@@ -8,7 +8,18 @@
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
-        <controls:DataGrid
+        
+        
+        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CommandBar FontSize="14" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                    <AppBarButton Click="AddButton_Click" x:Name="AddButton" Icon="Add" x:Uid="AddButton"/>
+                    <AppBarButton Icon="Share" x:Uid="ShareButton"/>
+                </CommandBar>
+                <TextBox FontSize="14" Width="300" x:Uid="SearchTextBox" />
+            </StackPanel>
+                <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
@@ -36,5 +47,6 @@
                 </controls:DataGridTemplateColumn>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
+        </StackPanel>
     </Grid>
 </Page>

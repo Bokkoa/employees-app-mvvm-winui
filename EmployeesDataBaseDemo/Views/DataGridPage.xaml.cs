@@ -1,5 +1,5 @@
 ﻿using EmployeesDataBaseDemo.ViewModels;
-
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace EmployeesDataBaseDemo.Views;
@@ -17,5 +17,23 @@ public sealed partial class DataGridPage : Page
     {
         ViewModel = App.GetService<DataGridViewModel>();
         InitializeComponent();
+    }
+
+    private async void AddButton_Click(object sender, RoutedEventArgs e)
+    {
+        ContentDialog dialog = new ContentDialog();
+
+        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+        dialog.XamlRoot = this.XamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+        dialog.Title = "Save your work?";
+        dialog.PrimaryButtonText = "Save";
+        dialog.SecondaryButtonText = "Don't Save";
+        dialog.CloseButtonText = "Cancel";
+        dialog.DefaultButton = ContentDialogButton.Primary;
+        dialog.Content = new EmployeesUserControl();
+
+        var result = await dialog.ShowAsync();
+
     }
 }

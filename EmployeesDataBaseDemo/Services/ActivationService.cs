@@ -4,6 +4,7 @@ using EmployeesDataBaseDemo.Views;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Windows.Globalization;
 
 namespace EmployeesDataBaseDemo.Services;
 
@@ -23,6 +24,10 @@ public class ActivationService : IActivationService
 
     public async Task ActivateAsync(object activationArgs)
     {
+
+        // HARDCODED LANGUAGE NOT FROM MANIFEST
+        //ApplicationLanguages.PrimaryLanguageOverride = "es-mx";
+
         // Execute tasks before activation.
         await InitializeAsync();
 

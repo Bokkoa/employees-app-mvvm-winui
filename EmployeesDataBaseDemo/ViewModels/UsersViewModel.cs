@@ -2,9 +2,9 @@
 
 namespace EmployeesDataBaseDemo.ViewModels;
 
-public partial class AddEmployeesViewModel : ObservableRecipient
+public partial class UsersViewModel : ObservableRecipient
 {
-    public AddEmployeesViewModel()
+    public UsersViewModel()
     {
     }
 }

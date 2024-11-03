@@ -124,10 +124,10 @@
     <value>EmployeesDataBaseDemo</value>
   </data>
   <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
+    <value>Menu de Inicio</value>
   </data>
   <data name="Shell_DataGrid.Content" xml:space="preserve">
-    <value>Employees</value>
+    <value>Empleados</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
@@ -171,15 +171,6 @@
 &lt;/toast&gt;</value>
   </data>
   <data name="Shell_Users.Content" xml:space="preserve">
-    <value>Users</value>
-  </data>
-  <data name="AddButton.Label" xml:space="preserve">
-    <value>Add!</value>
-  </data>
-  <data name="SearchTextBox.PlaceholderText" xml:space="preserve">
-    <value>Search for a user...</value>
-  </data>
-  <data name="ShareButton.Label" xml:space="preserve">
-    <value>Share (Excel) :)</value>
+    <value>Usuarios</value>
   </data>
 </root>
