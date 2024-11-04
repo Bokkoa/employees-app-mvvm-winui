@@ -1,5 +1,5 @@
-﻿using EmployeesDataBaseDemo.ViewModels;
-
+﻿
+using EmployeesDataBaseDemo.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 
 namespace EmployeesDataBaseDemo.Views;

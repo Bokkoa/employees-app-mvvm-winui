@@ -2,6 +2,8 @@
 using EmployeesDataBaseDemo.Contracts.Services;
 using EmployeesDataBaseDemo.Core.Contracts.Services;
 using EmployeesDataBaseDemo.Core.Services;
+using EmployeesDataBaseDemo.Data;
+using EmployeesDataBaseDemo.Data.EFEntity;
 using EmployeesDataBaseDemo.Helpers;
 using EmployeesDataBaseDemo.Models;
 using EmployeesDataBaseDemo.Notifications;
@@ -71,6 +73,9 @@ public partial class App : Application
             // Core Services
             services.AddSingleton<ISampleDataService, SampleDataService>();
             services.AddSingleton<IFileService, FileService>();
+
+            // EF Services
+            services.AddSingleton<IDataHelper<Employees>, EFEmployees>();
 
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();

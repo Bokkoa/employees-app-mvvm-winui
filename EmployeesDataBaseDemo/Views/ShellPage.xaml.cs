@@ -24,6 +24,9 @@ public sealed partial class ShellPage : Page
         ViewModel = viewModel;
         InitializeComponent();
 
+        // THIS IS FOR SOMETHING THAT I DONT KNOW
+        //MainRoot.FlowDirection = FlowDirection.LeftToRight;
+
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
 

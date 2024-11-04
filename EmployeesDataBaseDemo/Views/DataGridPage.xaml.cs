@@ -17,21 +17,11 @@ public sealed partial class DataGridPage : Page
     {
         ViewModel = App.GetService<DataGridViewModel>();
         InitializeComponent();
+        
     }
 
-    private async void AddButton_Click(object sender, RoutedEventArgs e)
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        ContentDialog dialog = new ContentDialog();
-
-        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
-        dialog.XamlRoot = this.XamlRoot;
-        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Save your work?";
-        dialog.CloseButtonText = "Cancel";
-        dialog.DefaultButton = ContentDialogButton.Primary;
-        dialog.Content = new EmployeesUserControl();
-
-        var result = await dialog.ShowAsync();
-
+        ViewModel.SearchCommand.Execute(SearchTextBox.Text);
     }
 }

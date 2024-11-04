@@ -13,11 +13,18 @@
 	<Nullable>enable</Nullable>
 	<UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <DefaultLanguage>en-us</DefaultLanguage>
+    <DefaultLanguage>es-MX</DefaultLanguage>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="EmpDataBase.db" />
     <None Remove="Views\EmployeesUserControl.xaml" />
     <None Remove="Views\UsersPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmpDataBase.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

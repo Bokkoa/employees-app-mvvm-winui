@@ -26,7 +26,7 @@ public class ActivationService : IActivationService
     {
 
         // HARDCODED LANGUAGE NOT FROM MANIFEST
-        //ApplicationLanguages.PrimaryLanguageOverride = "es-mx";
+        //ApplicationLanguages.PrimaryLanguageOverride = "en-us";
 
         // Execute tasks before activation.
         await InitializeAsync();

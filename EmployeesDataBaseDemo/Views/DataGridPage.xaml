@@ -8,45 +8,53 @@
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
-        
-        
-        
+
+
+
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CommandBar FontSize="14" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-                    <AppBarButton Click="AddButton_Click" x:Name="AddButton" Icon="Add" x:Uid="AddButton"/>
+                    <AppBarButton 
+                        Command="{x:Bind ViewModel.NewDataCommand}"
+                        CommandParameter="{x:Bind XamlRoot}"
+                        x:Name="AddButton" Icon="Add" x:Uid="AddButton"/>
+                    <AppBarButton Command="{x:Bind ViewModel.RefreshCommand}" Icon="Refresh" x:Uid="RefreshButton"/>
                     <AppBarButton Icon="Share" x:Uid="ShareButton"/>
+                    <AppBarButton Icon="Edit" Content="Edit"/>
+                    <AppBarButton Command="{x:Bind ViewModel.DeleteCommand}" Icon="Delete" Content="Delete"/>
                 </CommandBar>
-                <TextBox FontSize="14" Width="300" x:Uid="SearchTextBox" />
+                <TextBox x:Name="SearchTextBox" TextChanged="TextBox_TextChanged" FontSize="14" Width="300" x:Uid="SearchTextBox" />
             </StackPanel>
-                <controls:DataGrid
+
+
+            <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
-            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
-            <controls:DataGrid.Resources>
-                <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
-            </controls:DataGrid.Resources>
-            <controls:DataGrid.Columns>
-                <!-- TODO: Replace column definitions to match real data. Consider adding Header values to Resources.resw. -->
-                <controls:DataGridTextColumn Binding="{Binding OrderID}" Header="OrderID" />
-                <controls:DataGridTextColumn Binding="{Binding OrderDate}" Header="OrderDate" />
-                <controls:DataGridTextColumn Binding="{Binding Company}" Header="Company" />
-                <controls:DataGridTextColumn Binding="{Binding ShipTo}" Header="ShipTo" />
-                <controls:DataGridTextColumn Binding="{Binding OrderTotal}" Header="OrderTotal" />
-                <controls:DataGridTextColumn Binding="{Binding Status}" Header="Status" />
-                <controls:DataGridTemplateColumn Header="Symbol">
-                    <controls:DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <FontIcon
-                                HorizontalAlignment="Left"
-                                FontFamily="{ThemeResource SymbolThemeFontFamily}"
-                                Glyph="{Binding Symbol}"
-                                AutomationProperties.Name="{Binding SymbolName}" />
-                        </DataTemplate>
-                    </controls:DataGridTemplateColumn.CellTemplate>
-                </controls:DataGridTemplateColumn>
-            </controls:DataGrid.Columns>
-        </controls:DataGrid>
+            SelectedItem="{x:Bind ViewModel.Employee, Mode=TwoWay}"
+            ItemsSource="{x:Bind ViewModel.ListOfEmployees, Mode=TwoWay}">
+                <controls:DataGrid.Resources>
+                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+                </controls:DataGrid.Resources>
+                <controls:DataGrid.Columns>
+                    <!-- TODO: Replace column definitions to match real data. Consider adding Header values to Resources.resw. -->
+                    <controls:DataGridTextColumn Binding="{Binding ID}" Header="ID" />
+                    <controls:DataGridTextColumn Binding="{Binding FullName}" Header="FullName" />
+                    <controls:DataGridTextColumn Binding="{Binding Birthday}" Header="Birthday" />
+                    <controls:DataGridTextColumn Binding="{Binding Age}" Header="Age" />
+                    <controls:DataGridTextColumn Binding="{Binding Details}" Header="Details" />
+
+                    <controls:DataGridTemplateColumn Header="Actions">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CommandBar FontSize="14" Background="Transparent" IsOpen="False">
+                                    <AppBarButton Icon="Edit" Content="Edit"/>
+                                    <AppBarButton Icon="Delete" Content="Delete"/>
+                                </CommandBar>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
         </StackPanel>
     </Grid>
 </Page>

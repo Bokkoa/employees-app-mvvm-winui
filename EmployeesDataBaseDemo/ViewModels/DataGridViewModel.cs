@@ -1,38 +1,115 @@
-﻿using System.Collections.ObjectModel;
-
+﻿using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
-
-using EmployeesDataBaseDemo.Contracts.ViewModels;
-using EmployeesDataBaseDemo.Core.Contracts.Services;
-using EmployeesDataBaseDemo.Core.Models;
+using CommunityToolkit.Mvvm.Input;
+using EmployeesDataBaseDemo.Data;
+using EmployeesDataBaseDemo.Views;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace EmployeesDataBaseDemo.ViewModels;
 
-public partial class DataGridViewModel : ObservableRecipient, INavigationAware
+public partial class DataGridViewModel : ObservableRecipient
 {
-    private readonly ISampleDataService _sampleDataService;
+    private readonly IDataHelper<Employees> dataHelper;
 
-    public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
+    // STATE MUST BE in cammelcase because is internal state view binding
+    [ObservableProperty]
+    private List<Employees> listOfEmployees;    
 
-    public DataGridViewModel(ISampleDataService sampleDataService)
+    [ObservableProperty]
+    private Employees employee;
+
+    // Command
+    public ICommand NewDataCommand
     {
-        _sampleDataService = sampleDataService;
+        get;
     }
 
-    public async void OnNavigatedTo(object parameter)
+    public ICommand RefreshCommand
     {
-        Source.Clear();
+        get;
+    }
 
-        // TODO: Replace with real data.
-        var data = await _sampleDataService.GetGridDataAsync();
+    public ICommand SearchCommand
+    {
+        get;
+    }
 
-        foreach (var item in data)
+    public ICommand DeleteCommand
+    {
+        get;
+    }
+    public DataGridViewModel(IDataHelper<Employees> dataHelper)
+    {
+        this.dataHelper = dataHelper;
+        NewDataCommand = new RelayCommand<XamlRoot>(newData);
+        RefreshCommand = new RelayCommand(LoadData);
+        SearchCommand = new RelayCommand<string?>(Search);
+        DeleteCommand = new RelayCommand(Delete);
+
+        
+        // MUST BE in Pascal because is external view binding
+        ListOfEmployees = new List<Employees>();
+
+        employee = new Employees();
+
+        LoadData();
+    }
+
+    private async void newData(XamlRoot xamlRoot)
+    {
+        ContentDialog dialog = new ContentDialog();
+
+        // xamlroot must be set in the case of  a Content Dialog running in Desktop app
+        dialog.XamlRoot = xamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+        dialog.Title = "Add Employee";
+        dialog.CloseButtonText = "Cancel";
+        dialog.DefaultButton = ContentDialogButton.Primary;
+        dialog.Content = new EmployeesUserControl();
+
+        await dialog.ShowAsync();
+    }
+
+    private async void Delete()
+    {
+        var hasConnection = await Task.Run(() => dataHelper.CheckConnection());
+
+        if (hasConnection)
         {
-            Source.Add(item);
+            var result = await Task.Run(() => dataHelper.Delete(Employee.Id));
+
+            if (result == 1)
+            {
+                LoadData();
+            }
+
         }
     }
 
-    public void OnNavigatedFrom()
+    private async void LoadData()
     {
+
+        var hasConnection = await Task.Run(() => dataHelper.CheckConnection());
+
+        if (hasConnection)
+        {
+            // MUST BE in Pascal because is external view binding
+            ListOfEmployees = await Task.Run(() => dataHelper.GetAll());
+
+        }
+    }
+
+    private async void Search(string searchItem)
+    {
+
+        var hasConnection = await Task.Run(() => dataHelper.CheckConnection());
+
+        if (hasConnection)
+        {
+            // MUST BE in Pascal because is external view binding
+            ListOfEmployees = await Task.Run(() => dataHelper.Search(searchItem));
+
+        }
     }
 }

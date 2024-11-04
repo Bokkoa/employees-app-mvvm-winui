@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>EmployeesDataBaseDemo</value>
+    <value>Empleados App</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>EmployeesDataBaseDemo</value>
+    <value>Empleados CRUD</value>
   </data>
   <data name="Shell_Main.Content" xml:space="preserve">
     <value>Menu de Inicio</value>
@@ -130,16 +130,16 @@
     <value>Empleados</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalizacion</value>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Theme</value>
+    <value>Tema</value>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Claro</value>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Oscuro</value>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
     <value>Default</value>
@@ -151,7 +151,7 @@
     <value>TODO: Replace with your app description.</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Aviso de privacidad</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
@@ -172,5 +172,14 @@
   </data>
   <data name="Shell_Users.Content" xml:space="preserve">
     <value>Usuarios</value>
+  </data>
+  <data name="AddButton.Label" xml:space="preserve">
+    <value>Anexar</value>
+  </data>
+  <data name="SearchTextBox.PlaceholderText" xml:space="preserve">
+    <value>Buscar Usuario...</value>
+  </data>
+  <data name="ShareButton.Label" xml:space="preserve">
+    <value>Compartir! :)</value>
   </data>
 </root>

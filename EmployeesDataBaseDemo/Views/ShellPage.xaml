@@ -7,8 +7,13 @@
     xmlns:helpers="using:EmployeesDataBaseDemo.Helpers"
     xmlns:behaviors="using:EmployeesDataBaseDemo.Behaviors"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
-    Loaded="OnLoaded">
 
+    Loaded="OnLoaded">
+    
+    <!--TO CHANGE THE UI DIRECTION ADD TO <Page >-->
+    <!--x:Name="MainRoot"-->
+    <!--FlowDirection="RightToLeft"-->
+    
     <Grid>
         <Grid x:Name="AppTitleBar"
               Canvas.ZIndex="1"

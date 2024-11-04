@@ -18,25 +18,26 @@
         
         <StackPanel Margin="5">
             <TextBlock Text="Full Name: " />
-            <TextBox />
+            <TextBox Text="{x:Bind ViewModel.FullName, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Margin="5">
             <TextBlock Text="Age: " />
-            <DatePicker />
-        </StackPanel>
-
-        <StackPanel Margin="5">
-            <TextBlock Text="Age: " />
-            <NumberBox />
+            <NumberBox Text="{x:Bind ViewModel.Age, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Margin="5">
             <TextBlock Text="Details: " />
-            <RichEditBox />
+            <TextBox Text="{x:Bind ViewModel.Details, Mode=TwoWay}" />
         </StackPanel>
 
-        <Button Content="Save" HorizontalAlignment="Stretch" Margin="5" />
+        <!--<StackPanel Margin="5">
+            <TextBlock Text="Birthday: " />
+            <DatePicker />
+        </StackPanel>-->
+
+
+        <Button Command="{x:Bind ViewModel.SaveCommand}" Content="Save" x:Uid="Save" HorizontalAlignment="Stretch" Margin="5" />
 
     </StackPanel>
 </UserControl>
