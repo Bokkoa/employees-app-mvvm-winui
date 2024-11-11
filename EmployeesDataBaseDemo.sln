@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDataBaseDemo.Core"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDataBaseDemo.Tests.MSTest", "EmployeesDataBaseDemo.Tests.MSTest\EmployeesDataBaseDemo.Tests.MSTest.csproj", "{82547745-A76E-4B55-BF12-28DF36234229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDataBaseDemo.Data", "EmployeesDataBaseDemo.Data\EmployeesDataBaseDemo.Data.csproj", "{A3DB57CE-BA16-472E-AA6E-5490D6F32FAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesDataBaseDemo.Data", "EmployeesDataBaseDemo.Data\EmployeesDataBaseDemo.Data.csproj", "{A3DB57CE-BA16-472E-AA6E-5490D6F32FAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
